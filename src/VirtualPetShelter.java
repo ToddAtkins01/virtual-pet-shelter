@@ -1,67 +1,47 @@
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
+import java.util.Collection;
 
 public class VirtualPetShelter {
 
-	Map<String, Set<VirtualPet2>> coopsShelter = new HashMap<>();
+	Map<String, VirtualPet2> shelter = new HashMap<>();
+
+	public VirtualPet2 getName(String petName) {
+		return shelter.get(petName);
+	}
+
+	public Collection<VirtualPet2> allPets() {
+		return shelter.values();
+	}
 
 	public void addPet(VirtualPet2 newPet) {
-		String nameSearch = newPet.getName();
+		shelter.put(newPet.getName(), newPet);
+	}
 
-		Set<VirtualPet2> allPets = coopsShelter.get(nameSearch);
-		allPets.add(newPet);
+	public void removePet(String adoptedPet) {
+		shelter.remove(adoptedPet);
+	}
+
+	public void feedPets() {
+		for (VirtualPet2 feedAll : shelter.values()) {
+			feedAll.food();
+		}
+	}
+
+	public void hydratePets() {
+		for (VirtualPet2 hydrateAll : shelter.values()) {
+			hydrateAll.liquid();
+		}
+	}
+
+	public void playOnePet(VirtualPet2 playOnePet) {
+		playOnePet.play();
+	}
+
+	public void timeTick() {
+		for (VirtualPet2 tickAll : shelter.values()) {
+			tickAll.tick();
+		}
 
 	}
 }
-
-// String petName;
-// String discription;
-// int hunger = 100;
-// int thirst = 100;
-// int waste = 100;
-// int boredom = 100;
-//
-// boolean petIsAlive(String petName) {
-// if (hunger > 0 && thirst > 0 && waste < 150 && boredom > 0) {
-// return true;
-// }
-// return false;
-// }
-//
-// void food() {
-// hunger += 10;
-// thirst -= 5;
-// waste += 15;
-// boredom += 10;
-// }
-//
-// void liquid() {
-// hunger += 0;
-// thirst += 10;
-// waste += 10;
-// boredom += 5;
-// }
-//
-// void potty() {
-// hunger += 0;
-// thirst += 0;
-// waste -= 20;
-// boredom += 5;
-// }
-//
-// void play() {
-// hunger += 15;
-// thirst += 20;
-// waste += 1;
-// boredom -= 20;
-// }
-//
-// void tick() {
-// hunger -= 2;
-// thirst += 2;
-//
-// waste += 2;
-// boredom += 2;
-// }
-// }

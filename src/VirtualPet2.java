@@ -2,7 +2,7 @@
 public class VirtualPet2 {
 
 	String petName;
-	String discription;
+	String description;
 	int hunger;
 	int thirst;
 	int waste;
@@ -10,29 +10,49 @@ public class VirtualPet2 {
 
 	public VirtualPet2(String petName, String discription, int hunger, int thirst, int waste, int boredom) {
 		this.petName = petName;
-		this.discription = discription;
+		this.description = discription;
 		this.hunger = hunger;
 		this.thirst = thirst;
 		this.waste = waste;
 		this.boredom = boredom;
 	}
 
-	public String getName() {
-		return petName;
-	}
-
 	public VirtualPet2(String petName, String discription) {
 		this.petName = petName;
-		this.discription = discription;
+		this.description = discription;
 		this.hunger = 100;
 		this.thirst = 100;
 		this.waste = 100;
 		this.boredom = 100;
 	}
 
-	boolean petIsAlive(String petName) {
-		return (hunger > 0 && thirst > 0 && waste < 150 && boredom > 0);
+	public String getName() {
+		return petName;
 	}
+
+	public String getDiscription() {
+		return description;
+	}
+
+	public int getHunger() {
+		return hunger;
+	}
+
+	public int getThirst() {
+		return thirst;
+	}
+
+	public int getWaste() {
+		return waste;
+	}
+
+	public int getBoredom() {
+		return boredom;
+	}
+
+//	boolean petIsAlive(String petName) {
+//		return (hunger > 0 && thirst > 0 && waste < 150 && boredom > 0);
+//	}
 
 	void food() {
 		hunger += 10;
@@ -48,12 +68,12 @@ public class VirtualPet2 {
 		boredom += 5;
 	}
 
-	void potty() {
-		hunger += 0;
-		thirst += 0;
-		waste -= 20;
-		boredom += 5;
-	}
+	// void potty() {
+	// hunger += 0;
+	// thirst += 0;
+	// waste -= 20;
+	// boredom += 5;
+	// }
 
 	void play() {
 		hunger += 15;
@@ -65,7 +85,6 @@ public class VirtualPet2 {
 	void tick() {
 		hunger -= 2;
 		thirst += 2;
-
 		waste += 2;
 		boredom += 2;
 	}
