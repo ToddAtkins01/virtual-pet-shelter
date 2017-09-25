@@ -36,49 +36,73 @@ public class VirtualPetShelterApp {
 			System.out.println("Press 4 to Adopt a Pet");
 			System.out.println("Press 5 to Donate a Pet.");
 			System.out.println("Press 6 to Leave the Shelter.");
+
 			int userOption = input.nextInt();
 
 			while (userOption != 1 && userOption != 2 && userOption != 3 && userOption != 4 && userOption != 5)
 				;
-			;
 
 			switch (userOption) {
 
 			case 1:
 				coopersShelter.feedPets();
 				System.out.println("Thank you for feeding the pets!");
+				coopersShelter.timeTick();
 				break;
 
 			case 2:
 				coopersShelter.hydratePets();
 				System.out.println("Thank you for giving th epets some liquid!");
+				coopersShelter.timeTick();
 				break;
 
 			case 3:
 				System.out.println("Which pet would you like to play with?");
 				System.out.println("Enter their name to continue.");
 				for (VirtualPet2 currentPet : coopersShelter.allPets()) {
-					System.out.println(currentPet.petName + ", the " + currentPet.description);
+					System.out.println(currentPet.petName + ", the " + currentPet.getDiscription());
 				}
-				String petToPlayWith = input.next.equalsIgnoreCase();
+				String petToPlayWith = (input.next()).toUpperCase();
 				coopersShelter.getName(petToPlayWith).play();
 				System.out.println("You played with " + petToPlayWith);
+				coopersShelter.timeTick();
 				break;
-			//
-			// case 4:
-			// System.out.println(digiPet.petName + " Says, Woo Hoo!! We get to play!");
-			// digiPet.play();
-			// digiPet.tick();
-			// System.out.println("\n" + digiPet.petName + "'s bladder is now at: " +
-			// (digiPet.waste) + "\n");
-			// break;
-			//
-			// }
-			// if (!digiPet.petIsAlive(digiPet.petName)) {
-			// System.out.println("You KILLED " + digiPet.petName + "! You BASTARD!!!!");
-			//
-			}
 
+			case 4:
+				System.out.println("So who would you like to adopt?");
+				for (VirtualPet2 currentPet : coopersShelter.allPets()) {
+					System.out.println(currentPet.petName + ", the " + currentPet.getDiscription());
+				}
+				System.out.println();
+				System.out.println("Please enter the pet you would like to adopt.");
+				String adoptedPet = (input.next()).toUpperCase();
+				coopersShelter.removePet(adoptedPet);
+				System.out.println("You adopted " + adoptedPet + "!");
+				coopersShelter.timeTick();
+				break;
+
+			case 5:
+				System.out.println("Looks like your little friend needs a new home.");
+				System.out.print("What is the pet's name?");
+				String newPet = (input.next()).toUpperCase();
+				System.out.print("What type or breed is this pet?");
+				String newDescription = input.next();
+				VirtualPet2 addedPet = new VirtualPet2(newPet, newDescription);
+				coopersShelter.addPet(addedPet);
+				System.out.println();
+				System.out.println("Thank you, rest assured Cooper's Shelter will take GREAT care of " + newPet + ".");
+				System.out.println();
+				coopersShelter.timeTick();
+				break;
+
+			case 6:
+				System.out.println("Thank you so much for stopping by Cooper's Shelter! Take Care!");
+				System.exit(0);
+
+				// if (!digiPet.petIsAlive(digiPet.petName)) {
+				// System.out.println("You KILLED " + digiPet.petName + "! You BASTARD!!!!");
+				//
+			}
 		}
 		input.close();
 
