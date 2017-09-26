@@ -30,7 +30,7 @@ public class VirtualPet2 {
 		return petName;
 	}
 
-	public String getDiscription() {
+	public String getDescription() {
 		return description;
 	}
 
